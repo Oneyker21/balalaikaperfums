@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Balalaika's Perfums</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                green: '#026842',
+                gold: '#D4AF37',
+                darkGold: '#B5952F',
+                black: '#0a0a0a',
+                dark: '#121212',
+                gray: '#1E1E1E'
+              }
+            },
+            fontFamily: {
+              serif: ['"Playfair Display"', 'serif'],
+              sans: ['"Montserrat"', 'sans-serif'],
+            },
+            backgroundImage: {
+              'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        font-family: 'Montserrat', sans-serif;
+        background-color: #0a0a0a;
+        color: #e5e5e5;
+      }
+      h1, h2, h3, h4, h5, h6 {
+        font-family: 'Playfair Display', serif;
+      }
+      .parallax {
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      .glass-panel {
+        background: rgba(30, 30, 30, 0.6);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      /* Custom scrollbar for a premium feel */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0a0a0a; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #333; 
+        border-radius: 3px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #D4AF37; 
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react-dom": "https://aistudiocdn.com/react-dom@^19.2.0",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.553.0",
+    "firebase/app": "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js",
+    "firebase/auth": "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js",
+    "firebase/firestore": "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js",
+    "firebase/": "https://aistudiocdn.com/firebase@^12.6.0/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
