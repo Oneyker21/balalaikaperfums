@@ -15,15 +15,22 @@ const Hero: React.FC = () => {
       <div 
         className="absolute inset-0 parallax opacity-80"
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1557170334-a9632e77c6e4?q=80&w=2500&auto=format&fit=crop')`,
-          backgroundColor: '#0a0a0a' 
+          // Imagen local en `public/balalikas.jpeg`.
+          backgroundImage: `url('/balalikas.jpeg')`,
+          backgroundColor: '#0a0a0a',
+          backgroundPosition: 'center',
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat',
+          // Aplicamos blur y reducimos brillo para un fondo difuminado y más oscuro
+          // Ajustado: un poco más oscuro según la última petición
+          filter: 'blur(4px) brightness(0.35)'
         }}
       >
       </div>
       
-      {/* Overlays for depth */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black"></div>
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-black/20 to-black"></div>
+  {/* Overlays for depth: oscurecimiento adicional pedido por el usuario */}
+  <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-transparent to-black/70"></div>
+  <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-black/80 to-black/50"></div>
 
       {/* Content */}
       <div className="relative h-full flex flex-col items-center justify-center text-center px-4 z-10">
@@ -34,10 +41,10 @@ const Hero: React.FC = () => {
                 </h2>
             </div>
             
-            <h1 className="text-5xl md:text-8xl font-serif text-white mb-8 drop-shadow-2xl leading-tight">
-                Balalaika's
-                <span className="block text-3xl md:text-4xl mt-4 font-sans font-light text-gray-300 tracking-[0.5em] uppercase">Perfums</span>
-            </h1>
+      <h1 className="text-5xl md:text-8xl font-serif text-white mb-8 drop-shadow-2xl leading-tight">
+        Balalaika's d
+        <span className="block text-3xl md:text-4xl mt-4 font-sans font-light text-gray-300 tracking-[0.5em] uppercase">Perfums</span>
+      </h1>
             
             <div className="w-24 h-1 bg-brand-gold mx-auto mb-8"></div>
 
