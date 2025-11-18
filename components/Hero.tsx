@@ -22,8 +22,7 @@ const Hero: React.FC = () => {
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat',
           // Aplicamos blur y reducimos brillo para un fondo difuminado y más oscuro
-          // Ajustado: un poco más oscuro según la última petición
-          filter: 'blur(4px) brightness(0.35)'
+          filter: 'blur(4px) brightness(0.80)'
         }}
       >
       </div>

@@ -93,23 +93,22 @@ function App() {
                     <div>
                         <h4 className="text-white font-bold uppercase tracking-[0.2em] text-xs mb-6">Contacto</h4>
                         <div className="space-y-4 text-gray-500 text-sm font-light">
-                          <p>Calle Principal 123, Ciudad Lujo</p>
-                          <p>ventas@balalaikas.com</p>
-                          <p>+1 (555) 123-4567</p>
+                          <p>+505 8233 2792</p>
                         </div>
                     </div>
                     <div>
                         <h4 className="text-white font-bold uppercase tracking-[0.2em] text-xs mb-6">Redes Sociales</h4>
                         <div className="flex space-x-6">
-                            <a href="#" className="text-gray-500 hover:text-brand-gold transition-colors">Instagram</a>
-                            <a href="#" className="text-gray-500 hover:text-brand-gold transition-colors">Facebook</a>
-                            <a href="#" className="text-gray-500 hover:text-brand-gold transition-colors">TikTok</a>
+                            <a href="https://www.instagram.com/balalaika.perfum" className="text-gray-500 hover:text-brand-gold transition-colors">Instagram</a>
                         </div>
                     </div>
                 </div>
-                <div className="max-w-7xl mx-auto px-4 mt-16 pt-8 border-t border-white/5 text-center text-xs text-gray-600 uppercase tracking-widest">
-                    &copy; {new Date().getFullYear()} Balalaika's Perfums.
-                </div>
+                 <div className="max-w-7xl mx-auto px-4 mt-16 pt-8 border-t border-white/5 text-center text-xs text-gray-600 uppercase tracking-widest">
+                     &copy; {new Date().getFullYear()}{' '}
+                    <a href="https://www.instagram.com/codeviadev" target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold transition-colors">
+                         Codevia
+                    </a>
+                 </div>
             </footer>
           </>
         ) : (
