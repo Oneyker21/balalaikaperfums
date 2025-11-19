@@ -20,6 +20,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
   const [activeTab, setActiveTab] = useState<AdminTab>('PRODUCTS');
   const [products, setProducts] = useState<Product[]>([]);
   
+  
   // Filters for Admin Catalog
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('ALL');
@@ -36,7 +37,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
 
   // Product Form State
   const initialProductState = {
-    name: '', brand: '', description: '', price: 0, imageUrl: '', categoryId: '', subCategoryId: '', featured: false, outOfStock: false
+    name: '', brand: '', description: '', price: null, priceCordobas: null, imageUrl: '', categoryId: '', subCategoryId: '', featured: false, outOfStock: false
   };
   const [productFormData, setProductFormData] = useState<Partial<Product>>(initialProductState);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
@@ -66,8 +67,10 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
   }, [selectedCategory]);
 
   const filteredProducts = products.filter(product => {
-    const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                          product.brand.toLowerCase().includes(searchQuery.toLowerCase());
+    const q = searchQuery.toLowerCase();
+    const name = (product.name || '').toString().toLowerCase();
+    const brand = (product.brand || '').toString().toLowerCase();
+    const matchesSearch = name.includes(q) || brand.includes(q);
     
     const matchesCategory = selectedCategory === 'ALL' || product.categoryId === selectedCategory;
     const matchesSubCategory = selectedSubCategory === 'ALL' || product.subCategoryId === selectedSubCategory;
@@ -138,6 +141,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
           brand: product.brand,
           description: product.description,
           price: product.price,
+          priceCordobas: product.priceCordobas,
           imageUrl: product.imageUrl,
           categoryId: product.categoryId,
           subCategoryId: product.subCategoryId,
@@ -161,6 +165,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
         brand: finalBrandName,
         description: productFormData.description,
         price: Number(productFormData.price),
+        priceCordobas: Number(productFormData.priceCordobas) || 0,
         imageUrl: productFormData.imageUrl,
         categoryId: productFormData.categoryId,
         subCategoryId: productFormData.subCategoryId,
@@ -427,11 +432,15 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
                             <div className="p-4 flex flex-col flex-grow">
                                 <div className="mb-2">
                                     <div className="text-[10px] text-brand-gold font-bold uppercase tracking-wider mb-1 truncate">{product.brand}</div>
-                                    <h3 className="font-serif text-white text-lg truncate" title={product.name}>{product.name}</h3>
-                                </div>
-                                
-                                <div className="flex justify-between items-center mb-2">
-                                    <div className="text-lg font-medium text-white">${product.price.toFixed(2)}</div>
+                                    <h3 className="font-serif text-white text-lg truncate" title={product.name}>{product.name}</h3>                                
+                                    <div className={`flex flex-col ${product.outOfStock ? 'text-gray-500' : 'text-white'}`}>
+                                        <span className="text-lg font-medium">
+                                            ${(product.price ?? 0).toFixed(2)}
+                                        </span>
+                                        {product.priceCordobas && product.priceCordobas > 0 && (
+                                            <span className="text-xs text-gray-400">C${product.priceCordobas.toFixed(2)}</span>
+                                        )}
+                                    </div>
                                 </div>
                                 <div className="text-gray-500 text-xs mb-2">{categories.find(c => c.id === product.categoryId)?.name}</div>
                                 <p className="text-gray-600 text-xs line-clamp-2">{product.description}</p>
@@ -641,14 +650,19 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
                 {/* Modal Body (Scrollable) */}
                 <div className="p-8 overflow-y-auto custom-scrollbar">
                     <form id="productForm" onSubmit={handleProductSubmit} className="space-y-6">
+                        <div>
+                            <label className="block text-xs font-bold text-gray-400 mb-2 uppercase tracking-wider">Nombre</label>
+                            <input required type="text" className="w-full bg-black/40 border border-white/10 p-3 rounded text-white focus:border-brand-gold outline-none transition-colors" value={productFormData.name || ''} onChange={e => setProductFormData({...productFormData, name: e.target.value})} />
+                        </div>
+
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
-                                <label className="block text-xs font-bold text-gray-400 mb-2 uppercase tracking-wider">Nombre</label>
-                                <input required type="text" className="w-full bg-black/40 border border-white/10 p-3 rounded text-white focus:border-brand-gold outline-none transition-colors" value={productFormData.name} onChange={e => setProductFormData({...productFormData, name: e.target.value})} />
+                                <label className="block text-xs font-bold text-gray-400 mb-2 uppercase tracking-wider">Precio (USD)</label>
+                                <input required type="number" min="0" step="0.01" className="w-full bg-black/40 border border-white/10 p-3 rounded text-white focus:border-brand-gold outline-none transition-colors" value={productFormData.price ?? ''} onChange={e => setProductFormData({...productFormData, price: e.target.value === '' ? null : Math.max(0, parseFloat(e.target.value))})} />
                             </div>
                             <div>
-                                <label className="block text-xs font-bold text-gray-400 mb-2 uppercase tracking-wider">Precio</label>
-                                <input required type="number" step="0.01" className="w-full bg-black/40 border border-white/10 p-3 rounded text-white focus:border-brand-gold outline-none transition-colors" value={productFormData.price} onChange={e => setProductFormData({...productFormData, price: parseFloat(e.target.value)})} />
+                                <label className="block text-xs font-bold text-gray-400 mb-2 uppercase tracking-wider">Precio (NIO)</label>
+                                <input type="number" min="0" step="0.01" className="w-full bg-black/40 border border-white/10 p-3 rounded text-white focus:border-brand-gold outline-none transition-colors" value={productFormData.priceCordobas ?? ''} onChange={e => setProductFormData({...productFormData, priceCordobas: e.target.value === '' ? null : Math.max(0, parseFloat(e.target.value))})} />
                             </div>
                         </div>
 

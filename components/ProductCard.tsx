@@ -10,10 +10,19 @@ interface ProductCardProps {
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const PHONE_NUMBER = "50582332792"; 
   
+  const formatPrice = (price: number) => {
+    const roundedPrice = Math.round(price * 100) / 100;
+    if (roundedPrice % 1 === 0) {
+      return price.toString();
+    }
+    return roundedPrice.toFixed(2);
+  };
+
   const handleWhatsAppClick = () => {
     if (product.outOfStock) return;
 
-    const message = `Hola Balalaika's Perfums, estoy interesado en el perfume: ${product.name} de la marca ${product.brand}.`;
+    const priceCordobasText = product.priceCordobas ? `/ C$${formatPrice(product.priceCordobas)}` : '';
+    const message = `Hola Balalaika's Perfums, estoy interesado en el perfume: ${product.name} de ${product.brand}. Precio: $${formatPrice(product.price)} ${priceCordobasText}`;
     const url = `https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');
   };
@@ -74,9 +83,14 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         </p>
         
         <div className="flex justify-between items-center pt-4 border-t border-white/5 group-hover:border-brand-gold/20 transition-colors">
-            <span className={`text-lg font-medium ${product.outOfStock ? 'text-gray-500 line-through' : 'text-white'}`}>
-                ${product.price.toFixed(2)}
-            </span>
+            <div className={`flex flex-col ${product.outOfStock ? 'text-gray-500 line-through' : 'text-white'}`}>
+                <span className="text-lg font-medium">
+                    ${formatPrice(product.price)}
+                </span>
+                {product.priceCordobas && product.priceCordobas > 0 && (
+                    <span className="text-xs text-gray-400">C${formatPrice(product.priceCordobas)}</span>
+                )}
+            </div>
             <button 
                 onClick={handleWhatsAppClick}
                 disabled={product.outOfStock}
