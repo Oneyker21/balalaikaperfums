@@ -21,7 +21,7 @@ function App() {
   // Firebase Data Fetching
   useEffect(() => {
     setLoading(true);
-    
+
     // Subscribe to Categories
     const unsubCategories = onSnapshot(query(collection(db, 'categories'), orderBy('name')), (snapshot) => {
       setCategories(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as Category)));
@@ -61,9 +61,9 @@ function App() {
 
   return (
     <div className="min-h-screen bg-brand-black flex flex-col text-gray-200">
-      <Navbar 
-        viewMode={viewMode} 
-        setViewMode={setViewMode} 
+      <Navbar
+        viewMode={viewMode}
+        setViewMode={setViewMode}
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
         user={user}
@@ -73,46 +73,46 @@ function App() {
         {viewMode === 'CLIENT' ? (
           <>
             <Hero />
-            <Catalog 
+            <Catalog
               products={products}
               categories={categories}
               subCategories={subCategories}
               searchQuery={searchQuery}
             />
-            
+
             {/* Footer */}
             <footer className="bg-black text-white py-16 mt-12 border-t border-white/5">
-                <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-12">
-                    <div>
-                        <h3 className="font-serif text-2xl mb-6 text-brand-gold">Balalaika's</h3>
-                        <p className="text-gray-500 text-sm leading-loose font-light">
-                            Redefiniendo la elegancia a través de esencias únicas. 
-                            Importadores directos de fragancias árabes, italianas y francesas.
-                        </p>
-                    </div>
-                    <div>
-                        <h4 className="text-white font-bold uppercase tracking-[0.2em] text-xs mb-6">Contacto</h4>
-                        <div className="space-y-4 text-gray-500 text-sm font-light">
-                          <p>+505 8233 2792</p>
-                        </div>
-                    </div>
-                    <div>
-                        <h4 className="text-white font-bold uppercase tracking-[0.2em] text-xs mb-6">Redes Sociales</h4>
-                        <div className="flex space-x-6">
-                            <a href="https://www.instagram.com/balalaika.perfum" className="text-gray-500 hover:text-brand-gold transition-colors">Instagram</a>
-                        </div>
-                    </div>
+              <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div>
+                  <h3 className="font-serif text-2xl mb-6 text-brand-gold">Balalaika's</h3>
+                  <p className="text-gray-500 text-sm leading-loose font-light">
+                    Descubre el Lugar indicado en fragancias y escencias. Lujo, calidad y distinción.
+                  </p>
                 </div>
-                 <div className="max-w-7xl mx-auto px-4 mt-16 pt-8 border-t border-white/5 text-center text-xs text-gray-600 uppercase tracking-widest">
-                     &copy; {new Date().getFullYear()}{' '}
-                    <a href="https://www.instagram.com/codeviadev" target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold transition-colors">
-                         Codevia
-                    </a>
-                 </div>
+                <div>
+                  <h4 className="text-white font-bold uppercase tracking-[0.2em] text-xs mb-6">Contacto</h4>
+                  <div className="space-y-4 text-gray-500 text-sm font-light">
+                    <p>+505 8233 2792</p>
+                  </div>
+                </div>
+                <div>
+                  <h4 className="text-white font-bold uppercase tracking-[0.2em] text-xs mb-6">Redes Sociales</h4>
+                  <div className="flex space-x-6">
+                    <a href="https://www.instagram.com/balalaika.perfum" className="text-gray-500 hover:text-brand-gold transition-colors">Instagram</a>
+                  </div>
+                </div>
+              </div>
+              <div className="max-w-7xl mx-auto px-4 mt-16 pt-8 border-t border-white/5 text-center text-xs text-gray-600 uppercase tracking-widest">
+                &copy; {new Date().getFullYear()}{' '}
+                <a href="https://www.instagram.com/codeviadev" target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold transition-colors">
+                  Codevia
+                </a>
+                {""} {`2019 - ${new Date().getFullYear()} Balalaika's d Perfums`}
+              </div>
             </footer>
           </>
         ) : (
-          <AdminDashboard 
+          <AdminDashboard
             categories={categories}
             subCategories={subCategories}
             user={user}

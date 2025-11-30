@@ -16,11 +16,13 @@ export interface Product {
   brand: string;
   description: string;
   price: number;
+  priceCordobas?: number;
   imageUrl: string;
   categoryId: string;
   subCategoryId: string;
   featured?: boolean;
   outOfStock?: boolean;
+  discount?: number; // Porcentaje de descuento (0-100)
 }
 
 export type ViewMode = 'CLIENT' | 'ADMIN';

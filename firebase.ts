@@ -3,14 +3,34 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 // We are skipping Storage as requested to use Base64 strings
 
+// Firebase configuration using environment variables
+// Make sure to set these in your .env file
 const firebaseConfig = {
-  apiKey: "AIzaSyBefAS9iH015YpdrCFknu-FYuCvojrnmcc",
-  authDomain: "balalaikasperfum.firebaseapp.com",
-  projectId: "balalaikasperfum",
-  storageBucket: "balalaikasperfum.firebasestorage.app",
-  messagingSenderId: "506856835374",
-  appId: "1:506856835374:web:944a0045c7684bbd3dd2bf"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID
 };
+
+// Validate that all required environment variables are present
+const requiredEnvVars = [
+  'VITE_FIREBASE_API_KEY',
+  'VITE_FIREBASE_AUTH_DOMAIN',
+  'VITE_FIREBASE_PROJECT_ID',
+  'VITE_FIREBASE_STORAGE_BUCKET',
+  'VITE_FIREBASE_MESSAGING_SENDER_ID',
+  'VITE_FIREBASE_APP_ID'
+] as const;
+
+const missingVars = requiredEnvVars.filter(varName => !import.meta.env[varName]);
+if (missingVars.length > 0) {
+  throw new Error(
+    `Missing required environment variables: ${missingVars.join(', ')}\n` +
+    'Please check your .env file and ensure all Firebase credentials are set.'
+  );
+}
 
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
