@@ -3,6 +3,9 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Catalog from './components/Catalog';
 import AdminDashboard from './components/Admin/AdminDashboard';
+import LandingPage from './components/LandingPage';
+import AboutUs from './components/AboutUs';
+import ShippingPayments from './components/ShippingPayments';
 import { Category, Product, SubCategory, ViewMode } from './types';
 import { db, auth } from './firebase';
 import { collection, onSnapshot, query, orderBy } from 'firebase/firestore';
@@ -10,7 +13,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 
 function App() {
   // State Management
-  const [viewMode, setViewMode] = useState<ViewMode>('CLIENT');
+  const [viewMode, setViewMode] = useState<ViewMode>('LANDING');
   const [products, setProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
   const [subCategories, setSubCategories] = useState<SubCategory[]>([]);
@@ -59,6 +62,18 @@ function App() {
     );
   }
 
+  if (viewMode === 'LANDING') {
+    return <LandingPage onEnter={() => setViewMode('CLIENT')} />;
+  }
+
+  if (viewMode === 'ABOUT') {
+    return <AboutUs onBack={() => setViewMode('CLIENT')} />;
+  }
+
+  if (viewMode === 'SHIPPING') {
+    return <ShippingPayments onBack={() => setViewMode('CLIENT')} />;
+  }
+
   return (
     <div className="min-h-screen bg-brand-black flex flex-col text-gray-200">
       <Navbar
@@ -90,6 +105,13 @@ function App() {
                   </p>
                 </div>
                 <div>
+                  <h4 className="text-white font-bold uppercase tracking-[0.2em] text-xs mb-6">Información</h4>
+                  <div className="space-y-3 text-gray-500 text-sm font-light">
+                    <button onClick={() => setViewMode('ABOUT')} className="block hover:text-brand-gold transition-colors text-left">Sobre Nosotros</button>
+                    <button onClick={() => setViewMode('SHIPPING')} className="block hover:text-brand-gold transition-colors text-left">Envíos y Pagos</button>
+                  </div>
+                </div>
+                <div>
                   <h4 className="text-white font-bold uppercase tracking-[0.2em] text-xs mb-6">Contacto</h4>
                   <div className="space-y-4 text-gray-500 text-sm font-light">
                     <p>+505 8233 2792</p>
@@ -102,12 +124,24 @@ function App() {
                   </div>
                 </div>
               </div>
-              <div className="max-w-7xl mx-auto px-4 mt-16 pt-8 border-t border-white/5 text-center text-xs text-gray-600 uppercase tracking-widest">
-                &copy; {new Date().getFullYear()}{' '}
-                <a href="https://www.instagram.com/codeviadev" target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold transition-colors">
-                  Codevia
-                </a>
-                {""} {`2019 - ${new Date().getFullYear()} Balalaika's d Perfums`}
+              <div className="max-w-7xl mx-auto px-4 mt-16 pt-8 border-t border-white/5">
+                <div className="flex justify-between items-center text-xs text-gray-600 uppercase tracking-widest">
+                  {/* Codevia - Left */}
+                  <div>
+                    &copy; {new Date().getFullYear()}{' '}
+                    <a href="https://www.instagram.com/codeviadev" target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold transition-colors">
+                      Codevia
+                    </a>
+                  </div>
+
+                  {/* Balalaika's - Center */}
+                  <div className="text-center">
+                    2019 - {new Date().getFullYear()} Balalaika's d Perfums
+                  </div>
+
+                  {/* Empty space for balance */}
+                  <div className="w-20"></div>
+                </div>
               </div>
             </footer>
           </>

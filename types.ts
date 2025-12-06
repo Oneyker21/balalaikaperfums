@@ -25,5 +25,5 @@ export interface Product {
   discount?: number; // Porcentaje de descuento (0-100)
 }
 
-export type ViewMode = 'CLIENT' | 'ADMIN';
+export type ViewMode = 'LANDING' | 'CLIENT' | 'ADMIN' | 'ABOUT' | 'SHIPPING';
 export type AdminTab = 'PRODUCTS' | 'CATEGORIES';
