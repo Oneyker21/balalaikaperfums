@@ -23,6 +23,7 @@ export interface Product {
   featured?: boolean;
   outOfStock?: boolean;
   discount?: number; // Porcentaje de descuento (0-100)
+  gender?: 'Masculino' | 'Femenino' | 'Unisex'; // Género del perfume
 }
 
 export type ViewMode = 'LANDING' | 'CLIENT' | 'ADMIN' | 'ABOUT' | 'SHIPPING';

@@ -37,7 +37,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
 
     // Product Form State
     const initialProductState = {
-        name: '', brand: '', description: '', price: null, priceCordobas: null, imageUrl: '', categoryId: '', subCategoryId: '', featured: false, outOfStock: false, discount: 0
+        name: '', brand: '', description: '', price: null, priceCordobas: null, imageUrl: '', categoryId: '', subCategoryId: '', featured: false, outOfStock: false, discount: 0, gender: undefined
     };
     const [productFormData, setProductFormData] = useState<Partial<Product>>(initialProductState);
     const [imagePreview, setImagePreview] = useState<string | null>(null);
@@ -147,7 +147,8 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
             subCategoryId: product.subCategoryId,
             featured: product.featured || false,
             outOfStock: product.outOfStock || false,
-            discount: product.discount || 0
+            discount: product.discount || 0,
+            gender: product.gender || undefined
         });
         setImagePreview(product.imageUrl);
         setIsModalOpen(true);
@@ -172,7 +173,8 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
                 subCategoryId: productFormData.subCategoryId,
                 featured: productFormData.featured,
                 outOfStock: productFormData.outOfStock || false,
-                discount: Number(productFormData.discount) || 0
+                discount: Number(productFormData.discount) || 0,
+                gender: productFormData.gender || undefined
             };
 
             if (editingProductId) {
@@ -720,6 +722,20 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
                                             </div>
                                         )}
                                     </div>
+                                </div>
+
+                                <div>
+                                    <label className="block text-xs font-bold text-gray-400 mb-2 uppercase tracking-wider">Género</label>
+                                    <select
+                                        className="w-full bg-black/40 border border-white/10 p-3 rounded text-white focus:border-brand-gold outline-none transition-colors"
+                                        value={productFormData.gender || ''}
+                                        onChange={e => setProductFormData({ ...productFormData, gender: e.target.value as 'Masculino' | 'Femenino' | 'Unisex' | undefined })}
+                                    >
+                                        <option value="" className="bg-black">Sin especificar</option>
+                                        <option value="Masculino" className="bg-black">Masculino</option>
+                                        <option value="Femenino" className="bg-black">Femenino</option>
+                                        <option value="Unisex" className="bg-black">Unisex</option>
+                                    </select>
                                 </div>
 
                                 <div>

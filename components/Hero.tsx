@@ -10,7 +10,7 @@ const Hero: React.FC = () => {
   };
 
   const handleWhatsAppClick = () => {
-    const PHONE_NUMBER = "50582332792";
+    const PHONE_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER || "50558804436";
     const message = "Hola Balalaika's Perfums, quiero hacer una consulta sobre sus productos.";
     const url = `https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');

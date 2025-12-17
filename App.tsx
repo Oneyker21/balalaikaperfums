@@ -114,7 +114,7 @@ function App() {
                 <div>
                   <h4 className="text-white font-bold uppercase tracking-[0.2em] text-xs mb-6">Contacto</h4>
                   <div className="space-y-4 text-gray-500 text-sm font-light">
-                    <p>+505 8233 2792</p>
+                    <p>+505 5880 4436</p>
                   </div>
                 </div>
                 <div>

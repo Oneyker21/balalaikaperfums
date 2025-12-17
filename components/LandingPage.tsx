@@ -28,13 +28,13 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
                         Balalaika's
                     </h1>
                     <p className="text-gray-400 text-lg md:text-xl font-light max-w-2xl mx-auto leading-relaxed mb-4">
-                        Descubre el lugar indicado en fragancias y esencias. <br />
-                        <span className="text-brand-gold">Lujo, calidad y distinción.</span>
+                        Perfumes árabes y de diseñador en Juigalpa, Chontales 🇳🇮 <br />
+                        <span className="text-brand-gold">Calidad real a buen precio</span>
                     </p>
 
                     {/* Subtexto */}
                     <p className="text-gray-500 text-sm md:text-base font-light max-w-2xl mx-auto">
-                        Fragancias exclusivas • Envíos rápidos • Pago contra entrega y transferencia
+                        Entregas rápidas • Pagos fáciles
                     </p>
                 </div>
 

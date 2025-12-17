@@ -8,7 +8,7 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  const PHONE_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER || "50582332792";
+  const PHONE_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER || "50558804436";
 
   const formatPrice = (price: number) => {
     const roundedPrice = Math.round(price * 100) / 100;
