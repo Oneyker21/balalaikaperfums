@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChevronDown, Instagram, MessageCircle } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 
 const Hero: React.FC = () => {
   const scrollToCatalog = () => {
@@ -7,13 +7,6 @@ const Hero: React.FC = () => {
     if (catalogElement) {
       catalogElement.scrollIntoView({ behavior: 'smooth' });
     }
-  };
-
-  const handleWhatsAppClick = () => {
-    const PHONE_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER || "50558804436";
-    const message = "Hola Balalaika's Perfums, quiero hacer una consulta sobre sus productos.";
-    const url = `https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(message)}`;
-    window.open(url, '_blank');
   };
 
   return (
@@ -58,30 +51,6 @@ const Hero: React.FC = () => {
             Descubre nuestra colección exclusiva de esencias.
             <span className="text-brand-gold"> Lujo, frescura y distinción</span> en cada gota.
           </p>
-
-          {/* Buttons Container */}
-          <div className="flex flex-col md:flex-row gap-4 items-center">
-            {/* Instagram Button */}
-            <a
-              href="https://www.instagram.com/balalaika.perfum"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative inline-flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold text-xs tracking-[0.15em] uppercase transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-purple-500/50 transform hover:scale-105"
-            >
-              <Instagram className="w-4 h-4" />
-              <span>Síguenos en Instagram</span>
-              <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </a>
-
-            {/* WhatsApp Button */}
-            <button
-              onClick={handleWhatsAppClick}
-              className="group relative inline-flex items-center gap-2 px-5 py-3 bg-brand-green hover:bg-green-600 text-white font-bold text-xs tracking-[0.15em] uppercase transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-brand-green/50 transform hover:scale-105"
-            >
-              <MessageCircle className="w-4 h-4" />
-              <span>Pedir por WhatsApp</span>
-            </button>
-          </div>
         </div>
 
         <div className="absolute bottom-10 animate-bounce">
