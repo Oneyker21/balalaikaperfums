@@ -96,36 +96,36 @@ function App() {
             />
 
             {/* Footer */}
-            <footer className="bg-black text-white py-16 mt-12 border-t border-white/5">
-              <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-12">
+            <footer className="bg-black text-white py-8 md:py-16 mt-8 md:mt-12 border-t border-white/5">
+              <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
                 <div>
-                  <h3 className="font-serif text-2xl mb-6 text-brand-gold">Balalaika's</h3>
-                  <p className="text-gray-500 text-sm leading-loose font-light">
+                  <h3 className="font-serif text-xl md:text-2xl mb-4 md:mb-6 text-brand-gold">Balalaika's</h3>
+                  <p className="text-gray-500 text-xs md:text-sm leading-loose font-light">
                     Descubre el Lugar indicado en fragancias y escencias. Lujo, calidad y distinción.
                   </p>
                 </div>
                 <div>
-                  <h4 className="text-white font-bold uppercase tracking-[0.2em] text-xs mb-6">Información</h4>
-                  <div className="space-y-3 text-gray-500 text-sm font-light">
+                  <h4 className="text-white font-bold uppercase tracking-[0.15em] md:tracking-[0.2em] text-[10px] md:text-xs mb-4 md:mb-6">Información</h4>
+                  <div className="space-y-2 md:space-y-3 text-gray-500 text-xs md:text-sm font-light">
                     <button onClick={() => setViewMode('ABOUT')} className="block hover:text-brand-gold transition-colors text-left">Sobre Nosotros</button>
                     <button onClick={() => setViewMode('SHIPPING')} className="block hover:text-brand-gold transition-colors text-left">Envíos y Pagos</button>
                   </div>
                 </div>
                 <div>
-                  <h4 className="text-white font-bold uppercase tracking-[0.2em] text-xs mb-6">Contacto</h4>
-                  <div className="space-y-4 text-gray-500 text-sm font-light">
+                  <h4 className="text-white font-bold uppercase tracking-[0.15em] md:tracking-[0.2em] text-[10px] md:text-xs mb-4 md:mb-6">Contacto</h4>
+                  <div className="space-y-3 md:space-y-4 text-gray-500 text-xs md:text-sm font-light">
                     <p>+505 5880 4436</p>
                   </div>
                 </div>
                 <div>
-                  <h4 className="text-white font-bold uppercase tracking-[0.2em] text-xs mb-6">Redes Sociales</h4>
-                  <div className="flex space-x-6">
+                  <h4 className="text-white font-bold uppercase tracking-[0.15em] md:tracking-[0.2em] text-[10px] md:text-xs mb-4 md:mb-6">Redes Sociales</h4>
+                  <div className="flex space-x-4 md:space-x-6">
                     <a href="https://www.instagram.com/balalaika.perfum" className="text-gray-500 hover:text-brand-gold transition-colors">Instagram</a>
                   </div>
                 </div>
               </div>
-              <div className="max-w-7xl mx-auto px-4 mt-16 pt-8 border-t border-white/5">
-                <div className="flex justify-between items-center text-xs text-gray-600 uppercase tracking-widest">
+              <div className="max-w-7xl mx-auto px-4 mt-8 md:mt-16 pt-6 md:pt-8 border-t border-white/5">
+                <div className="flex flex-col md:flex-row justify-between items-center text-[10px] md:text-xs text-gray-600 uppercase tracking-wider md:tracking-widest gap-4 md:gap-0">
                   {/* Codevia - Left */}
                   <div>
                     &copy; {new Date().getFullYear()}{' '}

@@ -10,7 +10,7 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <div className="relative h-[90vh] w-full overflow-hidden">
+    <div className="relative h-[60vh] md:h-[90vh] w-full overflow-hidden">
       {/* Parallax Background */}
       <div
         className="absolute inset-0 parallax opacity-80"
@@ -34,27 +34,27 @@ const Hero: React.FC = () => {
       {/* Content */}
       <div className="relative h-full flex flex-col items-center justify-center text-center px-4 z-10">
         <div className="animate-fade-in-up max-w-4xl">
-          <div className="inline-block mb-6 px-4 py-1 border border-brand-gold/30 rounded-full backdrop-blur-md bg-black/30">
-            <h2 className="text-brand-gold tracking-[0.3em] text-xs font-bold uppercase">
+          <div className="inline-block mb-3 md:mb-6 px-3 md:px-4 py-1 border border-brand-gold/30 rounded-full backdrop-blur-md bg-black/30">
+            <h2 className="text-brand-gold tracking-[0.2em] md:tracking-[0.3em] text-[10px] md:text-xs font-bold uppercase">
               Nueva Colección 2025
             </h2>
           </div>
 
-          <h1 className="text-5xl md:text-8xl font-serif text-white mb-8 drop-shadow-2xl leading-tight">
+          <h1 className="text-3xl md:text-5xl lg:text-8xl font-serif text-white mb-4 md:mb-8 drop-shadow-2xl leading-tight">
             Balalaika's d
-            <span className="block text-3xl md:text-4xl mt-4 font-sans font-light text-gray-300 tracking-[0.5em] uppercase">Perfums</span>
+            <span className="block text-xl md:text-3xl lg:text-4xl mt-2 md:mt-4 font-sans font-light text-gray-300 tracking-[0.3em] md:tracking-[0.5em] uppercase">Perfums</span>
           </h1>
 
-          <div className="w-24 h-1 bg-brand-gold mx-auto mb-8"></div>
+          <div className="w-16 md:w-24 h-1 bg-brand-gold mx-auto mb-4 md:mb-8"></div>
 
-          <p className="max-w-xl mx-auto text-gray-300 text-lg font-light leading-relaxed mb-12 tracking-wide">
+          <p className="max-w-xl mx-auto text-gray-300 text-sm md:text-lg font-light leading-relaxed mb-6 md:mb-12 tracking-wide px-4">
             Descubre nuestra colección exclusiva de esencias.
-            <span className="text-brand-gold"> Lujo, frescura y distinción</span> en cada gota.
+            <span className="text-brand-gold"> Lujo y distinción</span> en cada gota.
           </p>
         </div>
 
-        <div className="absolute bottom-10 animate-bounce">
-          <ChevronDown className="h-6 w-6 text-white/50" />
+        <div className="absolute bottom-6 md:bottom-10 animate-bounce">
+          <ChevronDown className="h-5 w-5 md:h-6 md:w-6 text-white/50" />
         </div>
       </div>
     </div>

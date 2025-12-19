@@ -46,36 +46,36 @@ const Catalog: React.FC<CatalogProps> = ({ products, categories, subCategories, 
     : subCategories.filter(sub => sub.categoryId === selectedCategory);
 
   return (
-    <div id="catalog" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 bg-brand-black">
+    <div id="catalog" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-20 bg-brand-black">
 
-      <div className="flex flex-col md:flex-row justify-between items-end mb-16 border-b border-white/10 pb-8">
+      <div className="flex flex-col md:flex-row justify-between items-end mb-8 md:mb-16 border-b border-white/10 pb-4 md:pb-8">
         <div>
-          <h2 className="text-4xl md:text-5xl font-serif text-white mb-3">Colección Exclusiva</h2>
-          <p className="text-gray-400 font-light tracking-wide">Perfumes árabes y de diseñador • Calidad real a buen precio • Entregas rápidas</p>
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-serif text-white mb-2 md:mb-3">Colección Exclusiva</h2>
+          <p className="text-xs md:text-sm text-gray-400 font-light tracking-wide">Perfumes árabes y de diseñador • Calidad real a buen precio • Entregas rápidas</p>
         </div>
-        <div className="text-brand-gold text-sm mt-6 md:mt-0 font-mono">
+        <div className="text-brand-gold text-xs md:text-sm mt-4 md:mt-6 lg:mt-0 font-mono">
           {filteredProducts.length} RESULTADOS
         </div>
       </div>
 
-      <div className="flex flex-col lg:flex-row gap-12">
+      <div className="flex flex-col lg:flex-row gap-6 md:gap-12">
 
         {/* Sidebar Filters */}
         <aside className="w-full lg:w-64 flex-shrink-0">
-          <div className="glass-panel p-6 rounded-sm sticky top-28">
-            <div className="flex items-center gap-3 mb-8 text-brand-gold pb-4 border-b border-white/10">
-              <SlidersHorizontal size={18} />
-              <h3 className="font-bold text-xs uppercase tracking-[0.2em]">Filtrar Por</h3>
+          <div className="glass-panel p-4 md:p-6 rounded-sm sticky top-28">
+            <div className="flex items-center gap-2 md:gap-3 mb-4 md:mb-8 text-brand-gold pb-3 md:pb-4 border-b border-white/10">
+              <SlidersHorizontal size={16} className="md:w-[18px] md:h-[18px]" />
+              <h3 className="font-bold text-[10px] md:text-xs uppercase tracking-[0.15em] md:tracking-[0.2em]">Filtrar Por</h3>
             </div>
 
             {/* Category Filter (Origin) */}
-            <div className="mb-10">
-              <h4 className="font-serif text-lg text-white mb-4">Categoría</h4>
+            <div className="mb-6 md:mb-10">
+              <h4 className="font-serif text-base md:text-lg text-white mb-3 md:mb-4">Categoría</h4>
               <ul className="space-y-1">
                 <li>
                   <button
                     onClick={() => setSelectedCategory('ALL')}
-                    className={`w-full text-left px-4 py-2 text-sm transition-all border-l-2 ${selectedCategory === 'ALL' ? 'border-brand-gold text-brand-gold bg-white/5' : 'border-transparent text-gray-500 hover:text-gray-300'}`}
+                    className={`w-full text-left px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm transition-all border-l-2 ${selectedCategory === 'ALL' ? 'border-brand-gold text-brand-gold bg-white/5' : 'border-transparent text-gray-500 hover:text-gray-300'}`}
                   >
                     Ver Todo
                   </button>
@@ -84,7 +84,7 @@ const Catalog: React.FC<CatalogProps> = ({ products, categories, subCategories, 
                   <li key={cat.id}>
                     <button
                       onClick={() => setSelectedCategory(cat.id)}
-                      className={`w-full text-left px-4 py-2 text-sm transition-all border-l-2 ${selectedCategory === cat.id ? 'border-brand-gold text-brand-gold bg-white/5' : 'border-transparent text-gray-500 hover:text-gray-300'}`}
+                      className={`w-full text-left px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm transition-all border-l-2 ${selectedCategory === cat.id ? 'border-brand-gold text-brand-gold bg-white/5' : 'border-transparent text-gray-500 hover:text-gray-300'}`}
                     >
                       {cat.name}
                     </button>
@@ -94,13 +94,13 @@ const Catalog: React.FC<CatalogProps> = ({ products, categories, subCategories, 
             </div>
 
             {/* Gender Filter */}
-            <div className="mb-10">
-              <h4 className="font-serif text-lg text-white mb-4">Género</h4>
+            <div className="mb-6 md:mb-10">
+              <h4 className="font-serif text-base md:text-lg text-white mb-3 md:mb-4">Género</h4>
               <ul className="space-y-1">
                 <li>
                   <button
                     onClick={() => setSelectedGender('ALL')}
-                    className={`w-full text-left px-4 py-2 text-sm transition-all border-l-2 ${selectedGender === 'ALL' ? 'border-brand-gold text-brand-gold bg-white/5' : 'border-transparent text-gray-500 hover:text-gray-300'}`}
+                    className={`w-full text-left px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm transition-all border-l-2 ${selectedGender === 'ALL' ? 'border-brand-gold text-brand-gold bg-white/5' : 'border-transparent text-gray-500 hover:text-gray-300'}`}
                   >
                     Todos
                   </button>
@@ -108,7 +108,7 @@ const Catalog: React.FC<CatalogProps> = ({ products, categories, subCategories, 
                 <li>
                   <button
                     onClick={() => setSelectedGender('Masculino')}
-                    className={`w-full text-left px-4 py-2 text-sm transition-all border-l-2 ${selectedGender === 'Masculino' ? 'border-brand-gold text-brand-gold bg-white/5' : 'border-transparent text-gray-500 hover:text-gray-300'}`}
+                    className={`w-full text-left px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm transition-all border-l-2 ${selectedGender === 'Masculino' ? 'border-brand-gold text-brand-gold bg-white/5' : 'border-transparent text-gray-500 hover:text-gray-300'}`}
                   >
                     Masculino
                   </button>
@@ -116,7 +116,7 @@ const Catalog: React.FC<CatalogProps> = ({ products, categories, subCategories, 
                 <li>
                   <button
                     onClick={() => setSelectedGender('Femenino')}
-                    className={`w-full text-left px-4 py-2 text-sm transition-all border-l-2 ${selectedGender === 'Femenino' ? 'border-brand-gold text-brand-gold bg-white/5' : 'border-transparent text-gray-500 hover:text-gray-300'}`}
+                    className={`w-full text-left px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm transition-all border-l-2 ${selectedGender === 'Femenino' ? 'border-brand-gold text-brand-gold bg-white/5' : 'border-transparent text-gray-500 hover:text-gray-300'}`}
                   >
                     Femenino
                   </button>
@@ -124,7 +124,7 @@ const Catalog: React.FC<CatalogProps> = ({ products, categories, subCategories, 
                 <li>
                   <button
                     onClick={() => setSelectedGender('Unisex')}
-                    className={`w-full text-left px-4 py-2 text-sm transition-all border-l-2 ${selectedGender === 'Unisex' ? 'border-brand-gold text-brand-gold bg-white/5' : 'border-transparent text-gray-500 hover:text-gray-300'}`}
+                    className={`w-full text-left px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm transition-all border-l-2 ${selectedGender === 'Unisex' ? 'border-brand-gold text-brand-gold bg-white/5' : 'border-transparent text-gray-500 hover:text-gray-300'}`}
                   >
                     Unisex
                   </button>
@@ -134,12 +134,12 @@ const Catalog: React.FC<CatalogProps> = ({ products, categories, subCategories, 
 
             {/* Subcategory Filter (Brand) - Only show if a category is selected */}
             <div className={`transition-all duration-500 overflow-hidden ${selectedCategory !== 'ALL' && availableSubCategories.length > 0 ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
-              <h4 className="font-serif text-lg text-white mb-4">Marcas</h4>
+              <h4 className="font-serif text-base md:text-lg text-white mb-3 md:mb-4">Marcas</h4>
               <ul className="space-y-1">
                 <li>
                   <button
                     onClick={() => setSelectedSubCategory('ALL')}
-                    className={`w-full text-left px-4 py-2 text-sm transition-all border-l-2 ${selectedSubCategory === 'ALL' ? 'border-brand-green text-brand-green bg-brand-green/10' : 'border-transparent text-gray-500 hover:text-gray-300'}`}
+                    className={`w-full text-left px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm transition-all border-l-2 ${selectedSubCategory === 'ALL' ? 'border-brand-green text-brand-green bg-brand-green/10' : 'border-transparent text-gray-500 hover:text-gray-300'}`}
                   >
                     Todas las marcas
                   </button>
@@ -148,7 +148,7 @@ const Catalog: React.FC<CatalogProps> = ({ products, categories, subCategories, 
                   <li key={sub.id}>
                     <button
                       onClick={() => setSelectedSubCategory(sub.id)}
-                      className={`w-full text-left px-4 py-2 text-sm transition-all border-l-2 ${selectedSubCategory === sub.id ? 'border-brand-green text-brand-green bg-brand-green/10' : 'border-transparent text-gray-500 hover:text-gray-300'}`}
+                      className={`w-full text-left px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm transition-all border-l-2 ${selectedSubCategory === sub.id ? 'border-brand-green text-brand-green bg-brand-green/10' : 'border-transparent text-gray-500 hover:text-gray-300'}`}
                     >
                       {sub.name}
                     </button>
@@ -162,7 +162,7 @@ const Catalog: React.FC<CatalogProps> = ({ products, categories, subCategories, 
         {/* Product Grid */}
         <div className="flex-grow">
           {filteredProducts.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
               {filteredProducts.map(product => (
                 <ProductCard key={product.id} product={product} />
               ))}
